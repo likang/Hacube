@@ -130,97 +130,100 @@ class PlayScreenState extends State<PlayScreen>
       }
     }
 
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/background.jpg"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Container(
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/glow.png"),
-              repeat: ImageRepeat.repeat,
+              image: AssetImage("assets/images/background.jpg"),
+              fit: BoxFit.cover,
             ),
           ),
-          padding: EdgeInsets.all(16),
-          child: Column(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.cyanAccent),
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Colors.cyanAccent,
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/glow.png"),
+                repeat: ImageRepeat.repeat,
+              ),
+            ),
+            padding: EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.cyanAccent),
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                color: Colors.cyanAccent,
+                              ),
                             ),
                           ),
-                        ),
-                        padding: EdgeInsets.all(8),
-                        child: Row(
-                          children: [
-                            CPButton(
-                              child: Text(
-                                "  BACK  ",
-                                style: TextStyle(fontSize: 12),
+                          padding: EdgeInsets.all(8),
+                          child: Row(
+                            children: [
+                              CPButton(
+                                child: Text(
+                                  "  BACK  ",
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
                               ),
-                              onPressed: () {
-                                Navigator.maybePop(context);
-                              },
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: ClockWidget(
-                                running: !waitInitShuffle && !showFinished,
-                                eventBus: eventBus,
+                              Expanded(
+                                flex: 1,
+                                child: ClockWidget(
+                                  running: !waitInitShuffle && !showFinished,
+                                  eventBus: eventBus,
+                                ),
                               ),
-                            ),
-                            CPButton(
-                              child: Text(
-                                "RESTART",
-                                style: TextStyle(fontSize: 12),
-                              ),
-                              onPressed: () async {
-                                if (inAnimation) {
-                                  return;
-                                }
+                              CPButton(
+                                child: Text(
+                                  "RESTART",
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                                onPressed: () async {
+                                  if (inAnimation) {
+                                    return;
+                                  }
 
-                                cube.reset();
+                                  cube.reset();
 
-                                eventBus.fire(ClockResetEvent());
-                                setState(() {
-                                  waitInitShuffle = true;
-                                  showFinished = false;
-                                });
-                                await shuffle();
-                                setState(() {
-                                  waitInitShuffle = false;
-                                });
-                              },
-                            ),
-                          ],
+                                  eventBus.fire(ClockResetEvent());
+                                  setState(() {
+                                    waitInitShuffle = true;
+                                    showFinished = false;
+                                  });
+                                  await shuffle();
+                                  setState(() {
+                                    waitInitShuffle = false;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          child: cubeArea,
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            child: cubeArea,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
