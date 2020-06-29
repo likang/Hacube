@@ -43,13 +43,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.14.13"
-  cupertino_icons:
+  event_bus:
     dependency: "direct main"
     description:
-      name: cupertino_icons
+      name: event_bus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.3"
+    version: "1.1.1"
   fake_async:
     dependency: transitive
     description:
