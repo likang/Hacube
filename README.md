@@ -1,16 +1,17 @@
-# hacube
+# Hacube
 
-A new Flutter project.
+This is a game of Rubik's cube written in Flutter and yes, It's 3D !
 
-## Getting Started
+## How this come
 
-This project is a starting point for a Flutter application.
+I am a Flutter fan and I just learned to play Rubik's cube. 
+Then I wonder if I can write an app about it in Hack20. 
 
-A few resources to get you started if this is your first Flutter project:
+Flutter has a great graphics library but unluckily it only support 2D. 
+I use some matrix transform to simulate the camera change in 3D, 
+and manually calculate the depth of every surface of cube.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Video
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Here is a [video](https://www.youtube.com/watch?v=-Dd-tQKp1ug) to show how it looks like.
+
