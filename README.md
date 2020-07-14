@@ -18,3 +18,11 @@ and manually calculate the depth of every surface of cube.
 
 Here is a [video](https://www.youtube.com/watch?v=-Dd-tQKp1ug) to show how it looks like.
 
+# Fluter Web
+
+To enable web support on flutter, you need to chang the main channel to *beta* 
+`flutter channel beta` and `flutter upgrade`, more info can be found [here](https://flutter.dev/docs/get-started/web).
+
+To migrate the project to flutter web, you need to run `flutter create .` and `flutter run -d chrome` to run on the browser.
+
+
